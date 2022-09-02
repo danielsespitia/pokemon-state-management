@@ -3,7 +3,6 @@ import { createContext, useContext, useState, useMemo } from 'react';
 const DexContext = createContext(undefined);
 
 const DexContextProvider = ({ children }) => {
-
   // TODO: Refactor to national dex
   const [kantoDex, setKantoDex] = useState([]);
   const [johtoDex, setJohtoDex] = useState([]);
@@ -89,11 +88,26 @@ const useDexContext = () => {
     );
   };
 
+  const add2JohtoDex = (selectedPokemon) => {
+    setJohtoDex([...johtoDex, selectedPokemon]);
+  };
+
+  const removeFromJohtoDex = (selectedPokemon) => {
+    // TODO: How to handle repeated pokemons?
+    setJohtoDex(
+      johtoDex.filter(
+        (currentPokemon) => currentPokemon.name !== selectedPokemon.name
+      )
+    );
+  };
+
   return {
     kantoDex,
-    setKantoDex,
     add2KantoDex,
     removeFromKantoDex,
+    johtoDex,
+    add2JohtoDex,
+    removeFromJohtoDex,
   };
 };
 

@@ -8,11 +8,9 @@ export const Header = ({ regions }) => {
         {!!regions &&
           regions.map((region) => (
             <li key={region.name}>
-              <Link
-                style={styles.navList}
-                to={region.name === 'Kanto' ? '/' : `/${region.name}`}
-              >
-                {region.name}
+              <Link style={styles.navList} to={`/${region.name}`}>
+                {/* Region name capital first letter */}
+                {region.name.charAt(0).toUpperCase() + region.name.slice(1)}
               </Link>
             </li>
           ))}

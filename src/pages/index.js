@@ -7,3 +7,4 @@ export * from './Kalos';
 export * from './Paldea';
 export * from './Sinnoh';
 export * from './Unova';
+export * from './Home';

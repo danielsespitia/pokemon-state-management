@@ -2,6 +2,8 @@ import React from 'react';
 import { imgGen } from '../util/imgGen';
 
 export const PokemonCard = ({ pokemon, add2Pokedex, removeFromPokedex }) => {
+  // TODO: Show pokemon type
+
   return (
     <>
       {!!imgGen(pokemon.url) ? (
