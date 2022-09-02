@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import {
   Kanto,
@@ -13,80 +12,68 @@ import {
 } from './pages';
 import { Header } from './components/Header';
 import { Pokedex } from './components/Pokedex';
+import { DexContextProvider } from './context/DexContext';
 import './App.css';
 
 function App() {
-  const [myPokemon, setMyPokemon] = useState([]);
-  console.log(myPokemon, 'holi');
-
   const regions = [
+    // TODO: optimize this code
     {
       name: 'Kanto',
-      page: (
-        <Kanto
-          gen={1}
-          style={displayStyle}
-          myPokemon={myPokemon}
-          setMyPokemon={setMyPokemon}
-        />
-      ),
+      page: <Kanto gen={1} />,
     },
     {
       name: 'Johto',
-      page: <Johto gen={2} style={displayStyle} setMyPokemon={setMyPokemon} />,
+      page: <Johto gen={2} />,
     },
     {
       name: 'Hoenn',
-      page: <Hoenn gen={3} style={displayStyle} setMyPokemon={setMyPokemon} />,
+      page: <Hoenn gen={3} />,
     },
     {
       name: 'Sinnoh',
-      page: <Sinnoh gen={4} style={displayStyle} setMyPokemon={setMyPokemon} />,
+      page: <Sinnoh gen={4} />,
     },
     {
       name: 'Unova',
-      page: <Unova gen={5} style={displayStyle} setMyPokemon={setMyPokemon} />,
+      page: <Unova gen={5} />,
     },
     {
       name: 'Kalos',
-      page: <Kalos gen={6} style={displayStyle} setMyPokemon={setMyPokemon} />,
+      page: <Kalos gen={6} />,
     },
     {
       name: 'Alola',
-      page: <Alola gen={7} style={displayStyle} setMyPokemon={setMyPokemon} />,
+      page: <Alola gen={7} />,
     },
     {
       name: 'Galar',
-      page: <Galar gen={8} style={displayStyle} setMyPokemon={setMyPokemon} />,
+      page: <Galar gen={8} />,
     },
     {
       name: 'Paldea',
-      page: <Paldea gen={9} style={displayStyle} setMyPokemon={setMyPokemon} />,
+      page: <Paldea gen={9} />,
     },
   ];
 
   return (
     <div className="App">
-      <Header regions={regions} myPokemon={myPokemon} />
-      <Pokedex myPokemon={myPokemon} />
-      <Routes>
-        {!!regions &&
-          regions.map((region) => (
-            <Route
-              key={region.name}
-              path={region.name === 'Kanto' ? '/' : `/${region.name}`}
-              element={region.page}
-            />
-          ))}
-      </Routes>
+      <Header regions={regions} />
+      <DexContextProvider>
+        <Pokedex />
+        <Routes>
+          {!!regions &&
+            regions.map((region) => (
+              <Route
+                key={region.name}
+                path={region.name === 'Kanto' ? '/' : `/${region.name}`}
+                element={region.page}
+              />
+            ))}
+        </Routes>
+      </DexContextProvider>
     </div>
   );
 }
 
 export default App;
-
-const displayStyle = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(9, 1fr)',
-  padding: 30,
-};

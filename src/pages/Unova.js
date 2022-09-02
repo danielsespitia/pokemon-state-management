@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
-import { PokemonCard } from '../components/PokemonCard';
 import axios from 'axios';
+import { RegionLayout } from '../components/RegionLayout';
+import { useDexContext } from '../context/DexContext';
 
-export const Unova = ({ gen, style }) => {
+export const Unova = ({ gen }) => {
+  const { add2UnovaDex: add2Pokedex, removeFromUnovaDex: removeFromPokedex } =
+    useDexContext();
+
   const [pokemons, setPokemons] = useState(null);
 
   useEffect(() => {
@@ -17,11 +21,10 @@ export const Unova = ({ gen, style }) => {
   }, [gen]);
 
   return (
-    <div style={style}>
-      {!!pokemons &&
-        pokemons.map((pokemon) => (
-          <PokemonCard key={pokemon.name} pokemon={pokemon} />
-        ))}
-    </div>
+    <RegionLayout
+      pokemons={pokemons}
+      add2Pokedex={add2Pokedex}
+      removeFromPokedex={removeFromPokedex}
+    />
   );
 };

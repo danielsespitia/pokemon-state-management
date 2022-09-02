@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
-import { PokemonCard } from '../components/PokemonCard';
 import axios from 'axios';
+import { RegionLayout } from '../components/RegionLayout';
+import { useDexContext } from '../context/DexContext';
 
-export const Galar = ({ gen, style }) => {
+export const Galar = ({ gen }) => {
+  const { add2GalarDex: add2Pokedex, removeFromGalarDex: removeFromPokedex } =
+    useDexContext();
+
   const [pokemons, setPokemons] = useState(null);
 
   useEffect(() => {
@@ -17,11 +21,10 @@ export const Galar = ({ gen, style }) => {
   }, [gen]);
 
   return (
-    <div style={style}>
-      {!!pokemons &&
-        pokemons.map((pokemon) => (
-          <PokemonCard key={pokemon.name} pokemon={pokemon} />
-        ))}
-    </div>
+    <RegionLayout
+      pokemons={pokemons}
+      add2Pokedex={add2Pokedex}
+      removeFromPokedex={removeFromPokedex}
+    />
   );
 };
