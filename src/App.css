@@ -37,3 +37,109 @@
     transform: rotate(360deg);
   }
 }
+
+.header {
+  width: 100%;
+  background-color: #61dbfb;
+  height: 68px;
+  justify-content: center;
+  align-items: center;
+}
+
+.region-list {
+  list-style: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 0 6%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #fff;
+}
+
+.pokedex {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/416e0746-bae7-42b0-9291-df457f485ee7/derwvdb-5c96b4d5-9a24-4057-a5d0-f9fb1f58e343.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQxNmUwNzQ2LWJhZTctNDJiMC05MjkxLWRmNDU3ZjQ4NWVlN1wvZGVyd3ZkYi01Yzk2YjRkNS05YTI0LTQwNTctYTVkMC1mOWZiMWY1OGUzNDMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Banvd9kgsocev8Ia1FfLRqfgi5JkkhkwmCQY8KCJhpw');
+}
+
+.region-layout {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  justify-items: center;
+  padding: 1.56%;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  align-items: center;
+  height: 80px;
+  width: 160px;
+  margin-bottom: 4.04%;
+  border: 2px solid #61dbfb;
+}
+
+.img-container {
+  height: 80px;
+  width: 80px;
+}
+
+.img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.pokemon-name {
+  color: #fff;
+}
+
+.button-container {
+  margin-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.button {
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  height: 20px;
+  width: 20px;
+  color: #61dbfb;
+  border: 2px solid #61dbfb;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 355px) {
+  .region-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 356px) and (max-width: 545px) {
+  .region-layout {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 546px) and (max-width: 768px) {
+  .region-layout {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

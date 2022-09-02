@@ -8,7 +8,6 @@ import {
   Kalos,
   Alola,
   Galar,
-  Paldea,
   Home,
 } from './pages';
 import { Header } from './components/Header';
@@ -18,6 +17,7 @@ import './App.css';
 
 function App() {
   // TODO: Refactor to enum
+  // TODO: Use Tannstack query for Pokemon details
   const regions = [
     // TODO: optimize this code
     {
@@ -51,10 +51,6 @@ function App() {
     {
       name: 'galar',
       page: <Galar gen={8} />,
-    },
-    {
-      name: 'paldea',
-      page: <Paldea gen={9} />,
     },
   ];
 

@@ -3,7 +3,7 @@ import { PokemonCard } from './PokemonCard';
 
 export const RegionLayout = ({ pokemons, add2Pokedex, removeFromPokedex }) => {
   return (
-    <div style={styles.container}>
+    <div className="region-layout">
       {!!pokemons &&
         pokemons.map((pokemon) => (
           <PokemonCard
@@ -15,12 +15,4 @@ export const RegionLayout = ({ pokemons, add2Pokedex, removeFromPokedex }) => {
         ))}
     </div>
   );
-};
-
-const styles = {
-  container: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(9, 1fr)',
-    padding: 30,
-  },
 };
