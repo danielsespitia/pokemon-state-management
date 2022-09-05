@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { RegionLayout } from '../components/RegionLayout';
 
-export const Hoenn = ({ gen }) => {
-  // TODO: Refactor to custom hook
+export const usePokemon = ({ gen }) => {
   const [pokemons, setPokemons] = useState(null);
 
   useEffect(() => {
@@ -17,5 +15,5 @@ export const Hoenn = ({ gen }) => {
     getPokemons();
   }, [gen]);
 
-  return <RegionLayout pokemons={pokemons} />;
+  return pokemons;
 };

@@ -1,18 +1,24 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import { imgGen } from '../util/imgGen';
 import { useDexContext } from '../context/DexContext';
 
 export const Pokedex = () => {
-  const location = useLocation();
-  const { kantoDex, johtoDex } = useDexContext();
+  const { state, location } = useDexContext();
 
+  // TODO: I know this can be improved
   const nationalDex = {
-    kanto: kantoDex,
-    johto: johtoDex,
+    kanto: state.kantoDex,
+    johto: state.johtoDex,
+    hoenn: state.hoennDex,
+    sinnoh: state.sinnohDex,
+    unova: state.unovaDex,
+    kalos: state.kalosDex,
+    alola: state.alolaDex,
+    galar: state.galarDex,
   };
 
-  const currentRegion = location.pathname.slice(1);
+  // TODO: Refactor to set location in context state
+  const currentRegion = location;
 
   const myPokemon = nationalDex[currentRegion]
     ? nationalDex[currentRegion]

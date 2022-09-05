@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { RegionLayout } from '../components/RegionLayout';
-import { useDexContext } from '../context/DexContext';
 
 export const Johto = ({ gen }) => {
-  const { add2JohtoDex: add2Pokedex, removeFromJohtoDex: removeFromPokedex } =
-    useDexContext();
-
+  // TODO: Refactor to custom hook
   const [pokemons, setPokemons] = useState(null);
 
   useEffect(() => {
@@ -20,11 +17,5 @@ export const Johto = ({ gen }) => {
     getPokemons();
   }, [gen]);
 
-  return (
-    <RegionLayout
-      pokemons={pokemons}
-      add2Pokedex={add2Pokedex}
-      removeFromPokedex={removeFromPokedex}
-    />
-  );
+  return <RegionLayout pokemons={pokemons} />;
 };

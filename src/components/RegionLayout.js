@@ -1,7 +1,10 @@
 import React from 'react';
 import { PokemonCard } from './PokemonCard';
+import { useDexContext } from '../context/DexContext';
 
-export const RegionLayout = ({ pokemons, add2Pokedex, removeFromPokedex }) => {
+export const RegionLayout = ({ pokemons }) => {
+  const { add2Pokedex, removeFromPokedex } = useDexContext();
+
   return (
     <div className="region-layout">
       {!!pokemons &&
