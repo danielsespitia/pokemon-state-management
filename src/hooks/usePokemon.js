@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export const usePokemon = ({ gen }) => {
+export const usePokemon = (gen) => {
   const [pokemons, setPokemons] = useState(null);
 
   useEffect(() => {

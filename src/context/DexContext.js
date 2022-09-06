@@ -48,9 +48,10 @@ const reducer = (state, action) => {
     case REMOVE_KANTO_DEX:
       return {
         ...state,
-        kantoDex: state.kantoDex.filter(
-          (currentPokemon) => currentPokemon.name !== action.payload.name
-        ),
+        kantoDex: state.kantoDex.filter((currentPokemon, index) => {
+          console.log(action.payload, 'indexselec', index, 'aaa');
+          return index !== action.payload;
+        }),
       };
     case UPDATE_JOHTO_DEX:
       return { ...state, johtoDex: [...state.johtoDex, action.payload] };
@@ -106,22 +107,43 @@ const useDexContext = () => {
     }
   };
 
-  const removeFromPokedex = (selectedPokemon) => {
+  const removeFromPokedex = (selectedPokemonIndex) => {
     switch (location) {
       case REGIONS.KANTO:
-        return dispatch({ type: REMOVE_KANTO_DEX, payload: selectedPokemon });
+        return dispatch({
+          type: REMOVE_KANTO_DEX,
+          payload: selectedPokemonIndex,
+        });
       case REGIONS.JOHTO:
-        return dispatch({ type: REMOVE_JOHTO_DEX, payload: selectedPokemon });
+        return dispatch({
+          type: REMOVE_JOHTO_DEX,
+          payload: selectedPokemonIndex,
+        });
       case REGIONS.HOENN:
-        return dispatch({ type: REMOVE_HOENN_DEX, payload: selectedPokemon });
+        return dispatch({
+          type: REMOVE_HOENN_DEX,
+          payload: selectedPokemonIndex,
+        });
       case REGIONS.SINNOH:
-        return dispatch({ type: REMOVE_SINNOH_DEX, payload: selectedPokemon });
+        return dispatch({
+          type: REMOVE_SINNOH_DEX,
+          payload: selectedPokemonIndex,
+        });
       case REGIONS.KALOS:
-        return dispatch({ type: REMOVE_KALOS_DEX, payload: selectedPokemon });
+        return dispatch({
+          type: REMOVE_KALOS_DEX,
+          payload: selectedPokemonIndex,
+        });
       case REGIONS.ALOLA:
-        return dispatch({ type: REMOVE_ALOLA_DEX, payload: selectedPokemon });
+        return dispatch({
+          type: REMOVE_ALOLA_DEX,
+          payload: selectedPokemonIndex,
+        });
       case REGIONS.GALAR:
-        return dispatch({ type: REMOVE_GALAR_DEX, payload: selectedPokemon });
+        return dispatch({
+          type: REMOVE_GALAR_DEX,
+          payload: selectedPokemonIndex,
+        });
       default:
         break;
     }
