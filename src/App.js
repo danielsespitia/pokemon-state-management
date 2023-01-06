@@ -14,8 +14,38 @@ import { Header } from './components/Header';
 import { Pokedex } from './components/Pokedex';
 import { DexContextProvider } from './context/DexContext';
 import './App.css';
+import fetchIntercept from 'fetch-intercept';
 
 function App() {
+  const unregister = fetchIntercept.register({
+    request: function (url, config) {
+      console.log('hola1');
+      // Modify the url or config here
+      return [url, config];
+    },
+
+    requestError: function (error) {
+      console.log('hola2');
+      // Called when an error occured during another 'request' interceptor call
+      return Promise.reject(error);
+    },
+
+    response: function (response) {
+      console.log('hola3');
+      // Modify the reponse object
+      return response;
+    },
+
+    responseError: function (error) {
+      console.log('hola4');
+      // Handle an fetch error
+      return Promise.reject(error);
+    },
+  });
+
+  // Unregister your interceptor
+  unregister();
+
   // TODO: Refactor to enum
   // TODO: Use Tannstack query for Pokemon details
   const regions = [
